@@ -38,6 +38,14 @@ public class Post extends BaseTime {
     @Builder.Default
     private List<PostGenFile> genFiles = new ArrayList<>();
 
+    public Post(Member author, String title, String content, boolean published, boolean listed) {
+        this.author = author;
+        this.title = title;
+        this.content = content;
+        this.published = published;
+        this.listed = listed;
+    }
+
     public PostGenFile addGenFile(PostGenFile.TypeCode typeCode, String filePath) {
         return addGenFile(typeCode, 0, filePath);
     }
