@@ -20,7 +20,6 @@ public class PostGenFile extends GenFile {
         this.typeCode = typeCode;
     }
 
-
     public enum TypeCode {
         attachment,
         thumbnail

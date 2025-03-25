@@ -9,8 +9,10 @@ import com.example.upload.global.entity.BaseTime;
 import com.example.upload.global.exception.ServiceException;
 import com.example.upload.standard.util.Ut;
 import jakarta.persistence.*;
-import lombok.*;
-import lombok.experimental.SuperBuilder;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -20,7 +22,6 @@ import java.util.stream.Collectors;
 @NoArgsConstructor
 @Getter
 @Setter
-@SuperBuilder
 public class Post extends BaseTime {
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -31,11 +32,9 @@ public class Post extends BaseTime {
     private boolean listed;
 
     @OneToMany(mappedBy = "post", cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, orphanRemoval = true)
-    @Builder.Default
     private List<Comment> comments = new ArrayList<>();
 
     @OneToMany(mappedBy = "post", cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, orphanRemoval = true)
-    @Builder.Default
     private List<PostGenFile> genFiles = new ArrayList<>();
 
     public Post(Member author, String title, String content, boolean published, boolean listed) {
@@ -166,11 +165,12 @@ public class Post extends BaseTime {
 
     public Comment addComment(Member author, String content) {
 
+
         Comment comment = new Comment(
                 this,
                 author,
                 content
-        );;
+        );
 
         comments.add(comment);
 

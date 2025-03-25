@@ -18,11 +18,11 @@ public class MemberService {
     public Member join(String username, String password, String nickname, String profileImgUrl) {
 
         Member member = new Member(
-                username,
-                password,
-                username,
-                nickname,
-                profileImgUrl
+          username,
+          password,
+          username,
+          nickname,
+          profileImgUrl
         );
 
         return memberRepository.save(member);
@@ -63,7 +63,6 @@ public class MemberService {
         return Optional.of(
                 new Member(
                         id,
-                        username,
                         username,
                         nickname
                 )
