@@ -1,11 +1,7 @@
-package com.example.upload.global.dto;
+package com.example.upload.global.dto
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import org.springframework.lang.NonNull;
-
+import com.fasterxml.jackson.annotation.JsonIgnore
+import com.fasterxml.jackson.annotation.JsonInclude
 @JsonInclude(JsonInclude.Include.NON_NULL)
 class RsData<T>(
     val code: String,

@@ -1,4 +1,4 @@
-package com.example.upload.domain.post.post.entity;
+package com.example.upload.domain.post.post.entity
 
 import com.example.upload.domain.member.member.entity.Member
 import com.example.upload.domain.post.comment.entity.Comment
@@ -200,7 +200,6 @@ class Post() :
     }
 
     fun checkActorCanMakeNewGenFile(actor: Member) {
-
         getCheckActorCanMakeNewGenFileRs(actor)
             .takeIf { it.isFail }
             ?.let {
@@ -209,7 +208,7 @@ class Post() :
     }
 
     fun getCheckActorCanMakeNewGenFileRs(actor: Member): RsData<Empty> {
-        // if (actor == null) return RsData("401-1", "로그인 후 이용해주세요.")
+//        if (actor == null) return RsData("401-1", "로그인 후 이용해주세요.")
         if (actor == author) return RsData.OK
         return RsData("403-1", "작성자만 파일을 업로드할 수 있습니다.")
     }

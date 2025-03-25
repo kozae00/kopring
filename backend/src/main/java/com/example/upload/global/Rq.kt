@@ -1,4 +1,4 @@
-package com.example.upload.global;
+package com.example.upload.global
 
 import com.example.upload.domain.member.member.entity.Member
 import com.example.upload.domain.member.member.service.MemberService
@@ -13,7 +13,6 @@ import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.stereotype.Component
 import org.springframework.web.context.annotation.RequestScope
 
-// Request, Response, Session, Cookie, Header
 @Component
 @RequestScope
 class Rq(
