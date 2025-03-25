@@ -9,7 +9,7 @@ import jakarta.persistence.FetchType
 import jakarta.persistence.ManyToOne
 
 @Entity
-class Comment(): BaseTime() {
+class Comment : BaseTime {
 
     @ManyToOne(fetch = FetchType.LAZY)
     lateinit var author: Member
@@ -19,9 +19,11 @@ class Comment(): BaseTime() {
 
     lateinit var content: String
 
-    constructor(post: Post, author: Member, content: String): this() {
-        this.post = post
+    constructor()
+
+    constructor(post: Post, author: Member, content: String) {
         this.author = author
+        this.post = post
         this.content = content
     }
 
@@ -32,14 +34,13 @@ class Comment(): BaseTime() {
     fun canModify(actor: Member) {
         if (actor.isAdmin) return
         if (actor == this.author) return
-        throw ServiceException("403-1", "자신이 작성한 글만 수정 가능합니다.")
+        throw ServiceException("403-1", "자신이 작성한 댓글만 수정 가능합니다.")
     }
 
     fun canDelete(actor: Member) = when {
         actor.isAdmin -> true
         actor == this.author -> true
         else ->
-        throw ServiceException("403-1", "자신이 작성한 댓글만 삭제 가능합니다.")
+            throw ServiceException("403-1", "자신이 작성한 댓글만 삭제 가능합니다.")
     }
-
 }
