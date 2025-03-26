@@ -22,7 +22,8 @@ class CustomAuthenticationSuccessHandler(
 
         var redirectUrl = session.getAttribute("redirectUrl") as String
 
-        redirectUrl.let{
+
+        if (redirectUrl.isBlank()) {
             redirectUrl = AppConfig.getSiteFrontUrl()
         }
 
