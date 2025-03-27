@@ -102,12 +102,12 @@ class ApiV1PostControllerTest @Autowired constructor(
             .andExpect(jsonPath("$.data.totalPages").isNumber()) // 전체 페이지 개수
 
         val postListParamDto = PostListParamDto(
-            keywordType,
-            keyword,
-            listed,
-            null,
-            page,
-            pageSize
+            keywordType = keywordType,
+            keyword = keyword,
+            listed = listed,
+            published = null,
+            page = page,
+            pageSize = pageSize
         )
 
         val postPage = postService.getItems(postListParamDto)
@@ -145,12 +145,12 @@ class ApiV1PostControllerTest @Autowired constructor(
             .andExpect(jsonPath("$.data.totalItems").value(148))
 
         val postListParamDto = PostListParamDto(
-            keywordType,
-            keyword,
-            listed,
-            null,
-            page,
-            pageSize
+            keywordType = keywordType,
+            keyword = keyword,
+            listed = listed,
+            published = null,
+            page = page,
+            pageSize = pageSize
         )
 
         val postPage = postService.getItems(postListParamDto)
@@ -188,12 +188,12 @@ class ApiV1PostControllerTest @Autowired constructor(
             .andExpect(jsonPath("$.data.totalItems").value(148))
 
         val postListParamDto = PostListParamDto(
-            keywordType,
-            keyword,
-            listed,
-            null,
-            page,
-            pageSize
+            keywordType = keywordType,
+            keyword = keyword,
+            listed = listed,
+            published = null,
+            page = page,
+            pageSize = pageSize
         )
 
         val postPage = postService.getItems(postListParamDto)
@@ -231,12 +231,12 @@ class ApiV1PostControllerTest @Autowired constructor(
             .andExpect(jsonPath("$.data.totalItems").value(95))
 
         val postListParamDto = PostListParamDto(
-            keywordType,
-            keyword,
-            null,
-            null,
-            page,
-            pageSize
+            keywordType = keywordType,
+            keyword = keyword,
+            listed = null,
+            published = null,
+            page = page,
+            pageSize = pageSize
         )
 
         val postPage = postService.getMines(postListParamDto, loginedMember)
