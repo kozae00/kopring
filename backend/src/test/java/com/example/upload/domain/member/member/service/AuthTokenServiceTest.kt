@@ -38,7 +38,7 @@ class AuthTokenServiceTest {
     @Test
     @DisplayName("jwt 생성")
     fun createToken() {
-        val originPayload = Map.of<String?, Any?>("name", "john", "age", 23)
+        val originPayload = mapOf("name" to  "john", "age" to 23)
 
         val jwtStr = createToken(keyString, expireSeconds, originPayload)
         Assertions.assertThat(jwtStr).isNotBlank()
@@ -63,7 +63,7 @@ class AuthTokenServiceTest {
     @Test
     @DisplayName("jwt valid check")
     fun checkValid() {
-        val member = memberService!!.findByUsername("user1").get()
+        val member = memberService.findByUsername("user1").get()
         val accessToken = authTokenService.genAccessToken(member)
         val isValid = isValidToken(keyString, accessToken)
         Assertions.assertThat(isValid).isTrue()
